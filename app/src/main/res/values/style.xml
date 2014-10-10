@@ -76,7 +76,7 @@
     	<item name="articleNoteBackground">#303030</item>
 	</style>
 
-	<style name="SystemTheme" parent="Theme.Sherlock.DeviceDefault">
+	<style name="SystemTheme" parent="android:Theme.DeviceDefault">
 	    <item name="smallScreenBackground">@android:color/transparent</item>
 		<item name="ttrssHorizontalDivider">@android:drawable/divider_horizontal_dark</item>
 		<item name="feedlistBackground">@android:color/transparent</item>

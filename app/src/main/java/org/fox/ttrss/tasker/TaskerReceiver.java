@@ -25,9 +25,9 @@ public class TaskerReceiver extends BroadcastReceiver {
 		
 		final Context fContext = context;
 		
-		if (com.twofortyfouram.locale.Intent.ACTION_FIRE_SETTING.equals(intent.getAction())) {
+		if (com.twofortyfouram.locale.api.Intent.ACTION_FIRE_SETTING.equals(intent.getAction())) {
 			
-			final Bundle settings = intent.getBundleExtra(com.twofortyfouram.locale.Intent.EXTRA_BUNDLE);
+			final Bundle settings = intent.getBundleExtra(com.twofortyfouram.locale.api.Intent.EXTRA_BUNDLE);
 			final int actionId = settings != null ? settings.getInt("actionId", -1) : -1;
 			
 			Log.d(TAG, "received action id=" + actionId);

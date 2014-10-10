@@ -26,7 +26,7 @@ public class TaskerSettingsActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	
-		Bundle settings = getIntent().getBundleExtra(com.twofortyfouram.locale.Intent.EXTRA_BUNDLE);
+		Bundle settings = getIntent().getBundleExtra(com.twofortyfouram.locale.api.Intent.EXTRA_BUNDLE);
 		
 		int actionId = settings != null ? settings.getInt("actionId", -1) : -1;
 		
@@ -73,7 +73,7 @@ public class TaskerSettingsActivity extends Activity {
     public void finish() {
 		final Intent intent = new Intent();
 
-		intent.putExtra(com.twofortyfouram.locale.Intent.EXTRA_BUNDLE, m_settings);
+		intent.putExtra(com.twofortyfouram.locale.api.Intent.EXTRA_BUNDLE, m_settings);
 		
 		String blurb = "?";
 		
@@ -86,7 +86,7 @@ public class TaskerSettingsActivity extends Activity {
 			break;
 		}
 		
-		intent.putExtra(com.twofortyfouram.locale.Intent.EXTRA_STRING_BLURB, blurb);
+		intent.putExtra(com.twofortyfouram.locale.api.Intent.EXTRA_STRING_BLURB, blurb);
 		
 		setResult(RESULT_OK, intent);
 		
