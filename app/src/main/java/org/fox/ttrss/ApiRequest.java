@@ -44,6 +44,7 @@ public class ApiRequest extends AsyncTask<HashMap<String,String>, Integer, JsonE
 	public static final int API_STATUS_ERR = 1;
 		
 	private String m_api;
+	private String m_sandstormKey;
 	private boolean m_transportDebugging = false;
 	protected int m_responseCode = 0;
 	protected String m_responseMessage;
@@ -60,6 +61,12 @@ public class ApiRequest extends AsyncTask<HashMap<String,String>, Integer, JsonE
 		m_prefs = PreferenceManager.getDefaultSharedPreferences(m_context);
 		
 		m_api = m_prefs.getString("ttrss_url", "").trim();
+
+		int hash_index = m_api.indexOf('#');
+		if (hash_index != -1) {
+			m_sandstormKey = m_api.substring(hash_index + 1);
+			m_api = m_api.substring(0, hash_index);
+		}
 		m_transportDebugging = m_prefs.getBoolean("transport_debugging", false);
 		m_lastError = ApiError.NO_ERROR;
 		
@@ -167,6 +174,10 @@ public class ApiRequest extends AsyncTask<HashMap<String,String>, Integer, JsonE
 				
 				conn.setRequestProperty("Authorization", "Basic " + 
 						Base64.encodeToString((httpLogin + ":" + httpPassword).getBytes("UTF-8"), Base64.NO_WRAP)); 				
+			}
+
+			if (m_sandstormKey != null) {
+				conn.setRequestProperty("Authorization", "Bearer " + m_sandstormKey);
 			}
 			
 			conn.setDoInput(true); 

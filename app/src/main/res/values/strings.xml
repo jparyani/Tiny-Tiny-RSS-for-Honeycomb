@@ -51,7 +51,7 @@
     <string name="article_mark_read_above">Mark above read</string>
     <string name="http_login_summary">Optional. Fill this if your tt-rss installation is protected by HTTP Basic authentication</string>
     <string name="login_summary">Your tt-rss login. Not needed for single user mode</string>
-    <string name="ttrss_url_summary">URL of your tt-rss installation directory, e.g. http://site.com/tt-rss/</string>
+    <string name="ttrss_url_summary">URL of your tt-rss installation directory, e.g. http://site.com/tt-rss/ or a Sandstorm web key</string>
     <string name="download_feed_icons">Enable feed icons</string>
     <string name="enable_cats">Enable feed categories</string>
     <string name="no_feeds_to_display">No feeds to display</string>
