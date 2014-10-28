@@ -142,11 +142,6 @@
                 android:title="@string/article_set_unread"/>
 
         </group>
-
-        <item
-            android:id="@+id/donate"
-            android:showAsAction=""
-            android:title="@string/trial_purchase"/>
     </group>
 
     <item

@@ -480,61 +480,6 @@ public class OnlineActivity extends CommonActivity {
 	}
 	
 	public void checkTrial(boolean notify) {
-		boolean isTrial = getPackageManager().checkSignatures(
-				getPackageName(), "org.fox.ttrss.key") != PackageManager.SIGNATURE_MATCH;
-
-		if (isTrial) {
-			long firstStart = m_prefs.getLong("date_firstlaunch_trial", -1);
-			
-			if (firstStart == -1) {
-				firstStart = System.currentTimeMillis();
-				
-				SharedPreferences.Editor editor = m_prefs.edit();
-				editor.putLong("date_firstlaunch_trial", firstStart);
-				editor.commit();
-			}
-			
-			if (!notify && System.currentTimeMillis() > firstStart + (TRIAL_DAYS * 24 * 60 * 60 * 1000)) {
-				
-				AlertDialog.Builder builder = new AlertDialog.Builder(this)
-				.setTitle(R.string.trial_expired)
-				.setMessage(R.string.trial_expired_message)
-				.setCancelable(false)
-				.setPositiveButton(getString(R.string.trial_purchase),
-						new OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								
-								openUnlockUrl();								
-								finish();
-
-							}
-						})
-				.setNegativeButton(getString(R.string.cancel),
-						new OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								
-								finish();
-
-							}
-						});
-		
-				AlertDialog dialog = builder.create();
-				dialog.show();
-				
-			} else {
-				long daysLeft = Math.round((firstStart + (TRIAL_DAYS * 24 * 60 * 60 * 1000) - System.currentTimeMillis()) / (24 * 60 * 60 * 1000));
-				
-				if (notify) {
-					toast(getString(R.string.trial_mode_prompt, Long.valueOf(daysLeft)));
-				}
-			}
-		} else if (notify) {			
-			//toast(R.string.trial_thanks);
-		}
 	}
 	
 	private void openUnlockUrl() {
@@ -723,11 +668,6 @@ public class OnlineActivity extends CommonActivity {
 					dialog = builder.create();
 					dialog.show();
 				}
-			}
-			return true;
-		case R.id.donate:
-			if (true) {
-				openUnlockUrl();
 			}
 			return true;
 		case R.id.logout:
@@ -1265,22 +1205,7 @@ public class OnlineActivity extends CommonActivity {
 		m_menu = menu;
 
 		initMenu();
-		
-		if (!isAmazonDevice()) {
-			List<PackageInfo> pkgs = getPackageManager()
-					.getInstalledPackages(0);
-	
-			for (PackageInfo p : pkgs) {
-				if ("org.fox.ttrss.key".equals(p.packageName)) {
-					Log.d(TAG, "license apk found");
-					menu.findItem(R.id.donate).setVisible(false);
-					break;
-				}
-			}
-		} else {
-			menu.findItem(R.id.donate).setVisible(false);
-		}
-		
+
 		return true;
 	}
 	
