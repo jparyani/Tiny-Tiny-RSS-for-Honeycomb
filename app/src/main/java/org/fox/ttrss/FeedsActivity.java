@@ -8,7 +8,6 @@ import org.fox.ttrss.types.Article;
 import org.fox.ttrss.types.ArticleList;
 import org.fox.ttrss.types.Feed;
 import org.fox.ttrss.types.FeedCategory;
-import org.fox.ttrss.util.AppRater;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
@@ -153,7 +152,6 @@ public class FeedsActivity extends OnlineActivity implements HeadlinesEventListe
 			ft.commit();
 				
 			if (!isAmazonDevice()) {
-				AppRater.appLaunched(this);
 				checkTrial(true);
 			}
 
