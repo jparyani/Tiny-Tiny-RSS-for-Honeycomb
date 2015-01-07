@@ -5,20 +5,21 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "org.fox.ttrss"
+        applicationId "org.sandstorm.ttrss"
         minSdkVersion 8
         targetSdkVersion 19
     }
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
 
     lintOptions {
         abortOnError false
+        disable 'MissingTranslation'
     }
 }
 

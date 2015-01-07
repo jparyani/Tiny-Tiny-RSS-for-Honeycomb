@@ -3,18 +3,6 @@
 
     <PreferenceCategory android:title="@string/connection" >
         <EditTextPreference
-            android:key="login"
-            android:singleLine="true"
-            android:summary="@string/login_summary"
-            android:title="@string/login" >
-        </EditTextPreference>
-        <EditTextPreference
-            android:key="password"
-            android:password="true"
-            android:singleLine="true"
-            android:title="@string/password" >
-        </EditTextPreference>
-        <EditTextPreference
             android:hint="@string/default_url"
             android:inputType="textUri"
             android:key="ttrss_url"
